@@ -2,7 +2,7 @@ import CarouselText from "@/components/CarouselText";
 
 function HomePage() {
   return (
-    <div>
+    <div className="relative -z-10 ">
       <CarouselText />
     </div>
   )
