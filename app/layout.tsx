@@ -1,6 +1,5 @@
-
 import type { Metadata } from "next";
-import { Spicy_Rice , Oi } from "next/font/google";
+import { Spicy_Rice, Oi } from "next/font/google";
 import "./globals.css";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
@@ -30,10 +29,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${spicyRice.className}`}>
-        <header>
+        <header className="relative z-10">
           <NavBar />
         </header>
-        <main className="mt-56 px-10 h-screen">
+        <main className="mt-52 h-screen">
           {children}
         </main>
         <footer>

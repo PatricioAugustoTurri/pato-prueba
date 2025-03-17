@@ -2,7 +2,6 @@
 
 import * as React from "react"
 import Link from "next/link"
-
 import { cn } from "@/lib/utils"
 import {
   NavigationMenu,
@@ -59,7 +58,7 @@ const NavegationD= () => {
                     className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                     href="/"
                   >
-                    <img src="favicon.ico" alt="" className="rounded-full"/> 
+                    <p>Home</p>
                     <div className="mb-2 mt-4 text-lg font-medium">
                         Pato Turri
                     </div>

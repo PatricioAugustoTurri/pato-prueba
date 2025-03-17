@@ -37,7 +37,7 @@ function CarouselText() {
 
     return (
         <div>
-            <Carousel className="w-full max-w-4xl mx-auto"
+            <Carousel className="w-full"
                 plugins={
                     [
                         Autoplay({
