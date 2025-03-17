@@ -15,7 +15,6 @@ export function useGetFeaturedProducts() {
                 const json = await res.json();
                 setResult(json.data);
                 setLoading(false);
-                console.log(json.data);
             } catch (error:any) {
                 setError(error);
                 setLoading(false);

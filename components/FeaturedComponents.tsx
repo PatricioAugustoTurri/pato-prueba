@@ -2,7 +2,7 @@
 
 import useGetFeaturedProducts from "@/api/useGetFeaturedProducts";
 import { ResponseType } from "@/types/response";
-import { Carousel, CarouselContent, CarouselItem } from "./ui/carousel";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "./ui/carousel";
 import SkeletonSchema from "./SkeletonSchema";
 import { ProductType } from "@/types/products";
 import { Expand, ShoppingCart } from "lucide-react";
@@ -12,9 +12,8 @@ import { useRouter } from "next/navigation";
 
 const FeaturedComponents = () => {
 
-    const { loading, resulte }: ResponseType = useGetFeaturedProducts();
-    console.log(process.env.NEXT_PUBLIC_BACKEND_URL);
-    const router = useRouter();
+    const { loading, resulte }: ResponseType = useGetFeaturedProducts()
+    const router = useRouter()
 
     return (
         <div className="w-full py-4 sm:py-16 sm:px-24 mx-auto">
@@ -34,21 +33,26 @@ const FeaturedComponents = () => {
                                             <CardContent className="relative flex items-center justify-center">
                                                 <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${images[0].url}`}
                                                     alt="Image"
-                                                    className="aspect-video rounded-sm"
+                                                    className="aspect-video rounded-sm object-cover"
                                                 />
                                                 <div className="absolute w-full px-6 transition duration-200 opacity-0 group-hover:opacity-100 bottom-5">
                                                     <div className="flex gap-x-6 justify-center text-white">
-                                                        <IconButton onClick={() => router.push(`/shop/${slug}`)}
-                                                            icon={<Expand size={20}
-                                                                className="text-gray-600"
-                                                            />} />
-                                                        <IconButton onClick={() => router.push(`/shop/${slug}`)}
-                                                            icon={<ShoppingCart size={20}
-                                                                className="text-gray-600"
-                                                            />} />
+                                                        <IconButton
+                                                            onClick={() => router.push(`/shop/${slug}`)}
+                                                            icon={<Expand size={20} />}
+                                                            className="text-gray-600"
+                                                        />
+                                                        <IconButton
+                                                            onClick={() => console.log("Comprar")}
+                                                            icon={<ShoppingCart size={20} />}
+                                                            className="text-gray-600"
+                                                        />
                                                     </div>
                                                 </div>
                                             </CardContent>
+                                            <div className="flex justify-between gap-4 px-8">
+                                                <h3 className="text-base">{productName}</h3>
+                                            </div>
                                         </Card>
                                     </div>
                                 </CarouselItem>
@@ -56,6 +60,8 @@ const FeaturedComponents = () => {
                         })
                     )}
                 </CarouselContent>
+                <CarouselPrevious />
+                <CarouselNext className="hidden sm:flex" />
             </Carousel>
         </div>
     )
