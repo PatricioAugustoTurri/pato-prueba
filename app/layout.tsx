@@ -32,7 +32,7 @@ export default function RootLayout({
         <header className="relative z-10">
           <NavBar />
         </header>
-        <main className="mt-52 h-screen">
+        <main className="mt-52 h-auto">
           {children}
         </main>
         <footer>
