@@ -16,29 +16,29 @@ import {
 const components: { id: number; title: string; href: string; description: string }[] = [
   {
     id:1,
-    title: "Retrato",
-    href: "/shop/retratos",
+    title: "Retratos",
+    href: "/category/retrato",
     description:
       "Los mejores retratos de algunas de las personas que conocí en mis viajes.",
   },
   {
     id:2,
     title: "Paisajes",
-    href: "/shop/paisajes",
+    href: "/category/paisaje",
     description:
       "Los mejores paisajes que conocí en mis viajes.",
   },
   {
     id:3,
     title: "Históricas",
-    href: "/shop/historicas",
+    href: "/category/historia",
     description:
       "Lugares ancestrales donde casi no se repiten, únicos y especiales.",
   },
   {
     id:4,
     title: "Ciudades",
-    href: "/shop/ciudades",
+    href: "/category/ciudad",
     description:
       "Fotos de algunas de las ciudades que visité en mis viajes.",
   },
@@ -68,10 +68,10 @@ const NavegationD= () => {
                   </a>
                 </NavigationMenuLink>
               </li>
-              <ListItem href="/shop" title="Shop">
+              <ListItem href="/category" title="Shop">
                 Entra para poder ver todas mis fotos.
               </ListItem>
-              <ListItem href="/shop/ofertas" title="Ofertas">
+              <ListItem href="/ofertas" title="Ofertas">
                 Entra para ver las ofertas y descuentos del momento.
               </ListItem>
               <ListItem href="/docs/primitives/typography" title="Typography">

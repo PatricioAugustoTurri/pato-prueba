@@ -7,7 +7,7 @@ function NavegationM() {
 
     const menu: { id: number, title: string, href: string }[] = [
         { id: 1, title: "Home", href: "/" },
-        { id: 2, title: "Shop", href: "/shop" },
+        { id: 2, title: "Shop", href: "/category" },
         { id: 3, title: "About", href: "/about" },
         { id: 4, title: "Contact", href: "/contact" },
         { id: 5, title: "Blog", href: "/blog" },

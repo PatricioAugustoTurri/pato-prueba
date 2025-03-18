@@ -25,7 +25,7 @@ const FeaturedComponents = () => {
                     )}
                     {resulte !== null && (
                         resulte.map((product: ProductType) => {
-                            const { id, productName, slug, description, active, isFeatured, price, images } = product;
+                            const { id, productName, slug, description, active, isFeatured, price, images,category } = product;
                             return (
                                 <CarouselItem key={id} className="md:basis-1/2 lg:basis-1/3 group">
                                     <div className="p-1">
@@ -38,7 +38,7 @@ const FeaturedComponents = () => {
                                                 <div className="absolute w-full px-6 transition duration-200 opacity-0 group-hover:opacity-100 bottom-5">
                                                     <div className="flex gap-x-6 justify-center text-white">
                                                         <IconButton
-                                                            onClick={() => router.push(`/shop/${slug}`)}
+                                                            onClick={() => router.push(`/category/${category.slug}/${slug}`)}
                                                             icon={<Expand size={20} />}
                                                             className="text-gray-600"
                                                         />

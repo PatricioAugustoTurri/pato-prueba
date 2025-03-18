@@ -1,4 +1,5 @@
 import BannerDiscount from "@/components/BannerDiscount";
+import BannerProduct from "@/components/BannerProduct";
 import CarouselText from "@/components/CarouselText";
 import ChooseCategory from "@/components/ChooseCategory";
 import FeaturedComponents from "@/components/FeaturedComponents";
@@ -10,6 +11,7 @@ function HomePage() {
       <FeaturedComponents />
       <BannerDiscount />
       <ChooseCategory />
+      <BannerProduct />
     </div>
   )
 }
