@@ -10,7 +10,7 @@ function BannerProduct() {
                 <p className="my-2 text-lg">Despierta tu curiosidad con cada una de nuestras fotos</p>
                 <Link href={"#"} className={buttonVariants()}>Comprar</Link>
             </div>
-            <div className="h-[350px] bg-cover lg:h-[900px] bg-[url('/one-peace.png')] bg-center mt-5">
+            <div className="h-[180px] bg-cover lg:h-[600px] bg-[url('/onePiace2.png')] bg-center mt-10">
 
             </div>
         </>

@@ -5,7 +5,7 @@ import { ResponseType } from "@/types/response";
 import Link from "next/link";
 
 function CategoryPage() {
-    const { resulte, loading, error }: ResponseType = useGetAllProducts()
+    const { resulte, loading }: ResponseType = useGetAllProducts()
 
     console.log(resulte)
     return (
@@ -14,13 +14,13 @@ function CategoryPage() {
             {loading && (
                 <h1 className="text-xl text-center">Cargando...</h1>
             )}
-            <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 my-10 gap-4">
+            <div className="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 my-10 gap-4">
                 {resulte !== null && !loading && (
-                    resulte.map((foto: ProductType) => {
+                    resulte.map((foto: any) => {
                         const { id, images, productName, category, }: ProductType = foto
                         return (
                             <div key={id}>
-                                <Link href={`/category/${category.slug}/${foto.slug}`}>
+                                <Link href={`/category/${category.slug}/${foto.documentId}`}>
                                     <img
                                         src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${images[0].url}`}
                                         alt={productName}
