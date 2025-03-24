@@ -24,7 +24,7 @@ function CategoryPage() {
                                     <img
                                         src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${images[0].url}`}
                                         alt={productName}
-                                        className="rounded-sm object-cover aspect-video hover:scale-120 transition ease-in-out duration-700" />
+                                        className="group rounded-sm object-cover aspect-video hover:scale-120 transition ease-in-out duration-700 cursor-pointer" />
                                 </Link>
                             </div>
                         )

@@ -3,6 +3,7 @@ import { Spicy_Rice, Oi } from "next/font/google";
 import "./globals.css";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
+import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
   title: "Pato Turri",
@@ -34,6 +35,7 @@ export default function RootLayout({
         </header>
         <main className="mt-52 h-auto">
           {children}
+          <Toaster />
         </main>
         <footer>
           <Footer />

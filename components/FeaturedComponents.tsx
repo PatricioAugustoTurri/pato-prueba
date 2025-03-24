@@ -5,7 +5,7 @@ import { ResponseType } from "@/types/response";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "./ui/carousel";
 import SkeletonSchema from "./SkeletonSchema";
 import { ProductType } from "@/types/products";
-import { Expand, ShoppingCart } from "lucide-react";
+import { Expand } from "lucide-react";
 import { Card, CardContent } from "./ui/card";
 import IconButton from "./IconButton";
 import { useRouter } from "next/navigation";
@@ -25,7 +25,7 @@ const FeaturedComponents = () => {
                     )}
                     {resulte !== null && (
                         resulte.map((product: ProductType) => {
-                            const { id, productName, slug, description, active, isFeatured, price, images,category,documentId } = product;
+                            const { id, productName, slug, description, active, isFeatured, price, images, category, documentId } = product;
                             return (
                                 <CarouselItem key={id} className="md:basis-1/2 lg:basis-1/3 group">
                                     <div className="p-1">
@@ -42,11 +42,7 @@ const FeaturedComponents = () => {
                                                             icon={<Expand size={20} />}
                                                             className="text-gray-600"
                                                         />
-                                                        <IconButton
-                                                            onClick={() => console.log("Comprar")}
-                                                            icon={<ShoppingCart size={20} />}
-                                                            className="text-gray-600"
-                                                        />
+
                                                     </div>
                                                 </div>
                                             </CardContent>

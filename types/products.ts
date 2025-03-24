@@ -1,6 +1,7 @@
 export type ProductType = {
 
     id: number,
+    cant: number,
     productName: string;
     documentId: string;
     slug: string;
@@ -16,5 +17,8 @@ export type ProductType = {
         categoryName: string;
         slug: string;
     };
-    size: string;
+    size: {
+        sizeName: string;
+        price: number;
+    };
 }

@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react"
 
-export function useGetAllProducts() {
-    const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/products?populate=*`
+export function useGetSizesProducts() {
+    const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/sizes`
     const [resulte, setResulte] = useState(null)
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState("")
 
-    useEffect(() => {
-        (async () => {
-            try {
+    useEffect (()=>{
+        (async()=>{
+            try{
                 const res = await fetch(url)
                 const json = await res.json()
                 setResulte(json.data)
@@ -16,10 +16,10 @@ export function useGetAllProducts() {
             } catch (error: any) {
                 setError(error)
                 setLoading(false)
+
             }
         })()
-
-    }, [url])
+    },[url])
 
     return { resulte, loading, error }
 }

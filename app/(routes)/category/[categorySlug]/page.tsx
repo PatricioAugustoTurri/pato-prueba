@@ -27,7 +27,7 @@ function CategoryPage() {
                             <div key={id}>
                                 <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${images[0].url}`}
                                     alt={productName}
-                                    className="rounded-sm object-cover aspect-video hover:scale-120 transition ease-in-out duration-700"
+                                    className="rounded-sm object-cover aspect-video hover:scale-120 transition ease-in-out duration-700 cursor-pointer"
                                     onClick={() => { router.push(`/category/${category.slug}/${documentId}`) }} />
                             </div>
                         )
