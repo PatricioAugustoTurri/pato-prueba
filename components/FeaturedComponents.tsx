@@ -5,15 +5,17 @@ import { ResponseType } from "@/types/response";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "./ui/carousel";
 import SkeletonSchema from "./SkeletonSchema";
 import { ProductType } from "@/types/products";
-import { Expand } from "lucide-react";
+import { Expand, Heart } from "lucide-react";
 import { Card, CardContent } from "./ui/card";
 import IconButton from "./IconButton";
 import { useRouter } from "next/navigation";
+import { useLovedProducts } from "@/hooks/UseLovedProdcuts";
 
 const FeaturedComponents = () => {
 
     const { loading, resulte }: ResponseType = useGetFeaturedProducts()
     const router = useRouter()
+    const {addLovedItem} = useLovedProducts()
 
     return (
         <div className="w-full py-4 sm:py-16 sm:px-24 mx-auto">
@@ -42,7 +44,11 @@ const FeaturedComponents = () => {
                                                             icon={<Expand size={20} />}
                                                             className="text-gray-600"
                                                         />
-
+                                                        <IconButton
+                                                        onClick={()=>{addLovedItem(product)}}
+                                                        icon={<Heart size={20} />}
+                                                        className="text-gray-600"
+                                                        />
                                                     </div>
                                                 </div>
                                             </CardContent>

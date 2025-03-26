@@ -5,12 +5,30 @@ import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
 import { useCart } from "@/hooks/UseCart"
 import { formatPrice } from "@/lib/formatPrice"
+import { MoveRight, SquareX } from "lucide-react"
+import {loadStripe} from "@stripe/stripe-js";
+import { makePaymentRequest } from "@/api/payment"
 
 function CartPage() {
-    const { items, removeAll } = useCart()
-    const prices = items.map((product) => product.size.price);
+    const { items, removeItem } = useCart()
+    const prices = items.map((product) => product.size.price * product.cant);
     const totalPrice = prices.reduce((a, b) => a + b, 0)
-    console.log(items)
+    
+    const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || "")
+    
+    const byStripe = async () =>{
+        try{
+            const stripe = await stripePromise
+            const res = await makePaymentRequest.post("api/orders",{
+                products: items
+            })
+            await stripe?.redirectToCheckout({
+                sessionId: res.data.stripeSession.id
+            })
+        } catch (error){
+            console.log(error)
+        }
+    }
 
     return (
         <div className="max-w-6xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
@@ -26,11 +44,26 @@ function CartPage() {
                                 <div key={item.id} >
                                     <div className="flex justify-between">
                                         <CartItems product={item} />
-                                        <div className="flex-col flex justify-start items-end my-8 mx-4">
-
+                                        <div className="flex flex-col">
+                                            <p className="md:text-2xl text-lg my-6">{item.productName}</p>
+                                            <div className="flex gap-1 text-sm">
+                                                <p>Cantidad:</p>
+                                                <p>{item.cant}</p>
+                                            </div>
+                                            <div className="flex gap-1 text-sm items-center">
+                                                <p>Tamaño:</p>
+                                                <p>{item.size.sizeName}</p>
+                                                <MoveRight />
+                                                <p>{formatPrice(item.size.price)}</p>
+                                            </div>
+                                            <div className="flex gap-1 text-sm items-center">
+                                                <p>Precio:</p>
+                                                <p>{formatPrice(item.size.price * item.cant)}</p>
+                                            </div>
                                         </div>
+                                        <SquareX className="w-6 h-6 cursor-pointer flex my-6 hover:fill-black duration-300 hover:text-white" onClick={() => removeItem(item.id)} />
                                     </div>
-                                    <Separator />
+                                    <Separator className="my-2 sm:my-0"/>
                                 </div>
                             )
                         })}
@@ -45,7 +78,7 @@ function CartPage() {
                             <p>{formatPrice(totalPrice)}</p>
                         </div>
                         <div className="flex items-center justify-center w-full mt-3">
-                            <Button className="w-full" onClick={() => { }}>Checkout</Button>
+                            <Button className="w-full cursor-pointer" onClick={() => {byStripe }}>Comprar</Button>
                         </div>
                     </div>
                 </div>

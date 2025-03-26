@@ -1,6 +1,6 @@
 export type SizeType = {
-    id: string;
+    id: number;
     documentId: string;
     price: number;
-    sizeName: string; 
+    sizeName: string;
 }

@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import NavegationD from "./NavegationD";
 import NavegationM from "./NavegationM";
 import { useCart } from "@/hooks/UseCart";
+import { useLovedProducts } from "@/hooks/UseLovedProdcuts";
 
 export const oi = Oi({
     weight: ["400"],
@@ -17,6 +18,7 @@ function NavBar() {
     const [hasShadow, setHasShadow] = useState(false);
     const router = useRouter();
     const cart = useCart()
+    const { lovedItems } = useLovedProducts()
 
     useEffect(() => {
         const handleScroll = () => {
@@ -43,14 +45,24 @@ function NavBar() {
             <div className="flex gap-6 justify-between items-center">
                 {cart.items.length === 0 ?
                     <ShoppingCart strokeWidth={1} className="cursor-pointer" onClick={() => router.push("/cart")} />
-                    :(
-                        <div className="flex gap-1" onClick={()=>router.push("/cart")}>
+                    : (
+                        <div className="flex gap-1" onClick={() => router.push("/cart")}>
                             <BaggageClaim strokeWidth={1} className="cursor-pointer" />
                             <span className="text-sm text-gray-500">{cart.items.length}</span>
                         </div>
                     )}
-
-                <Heart strokeWidth={1} className="cursor-pointer" onClick={() => router.push("/wishlist")} />
+                {lovedItems.length === 0 ?
+                    <Heart strokeWidth={1} className="cursor-pointer" onClick={() => router.push("/loved-products")} />
+                    : (
+                        <div className="flex gap-1">
+                            <Heart
+                                strokeWidth={1}
+                                className={`cursor-pointer ${lovedItems.length > 0 && "fill-black"}`}
+                                onClick={() => router.push("/loved-products")}
+                            />
+                            <span className="text-sm text-gray-500">{lovedItems.length}</span>
+                        </div>
+                    )}
                 <User strokeWidth={1} className="cursor-pointer" onClick={() => router.push("/account")} />
             </div>
         </div>

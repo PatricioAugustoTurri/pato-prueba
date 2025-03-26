@@ -10,9 +10,9 @@ export type ProductType = {
     isFeatured: boolean,
     price: number,
     images: {
-            id: number,
-            url: string,
-        }[]
+        id: number,
+        url: string,
+    }[]
     category: {
         categoryName: string;
         slug: string;

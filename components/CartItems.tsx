@@ -1,5 +1,5 @@
 "use client"
-import { useCart } from "@/hooks/UseCart"
+
 import { ProductType } from "@/types/products"
 import { useRouter } from "next/navigation"
 
@@ -10,7 +10,6 @@ interface CartItemsProps {
 function CartItems(props: CartItemsProps) {
     const { product } = props
     const router = useRouter()
-    const { removeItem } = useCart()
 
     return (
         <li className="flex py-6 border-b">
